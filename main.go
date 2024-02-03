@@ -16,14 +16,6 @@ func main() {
 	if err != nil {
 		e.Logger.Fatal(err)
 	}
-	// Auto Migrate Customer struct to database
-	err = db.AutoMigrate(&service.Customer{})
-	if err != nil {
-		e.Logger.Fatal(err)
-	}
-
-	// Initialize mock data
-	createInitialData(db)
 
 	customerService := service.NewCustomerService(db)
 
@@ -35,15 +27,4 @@ func main() {
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))
-}
-
-func createInitialData(db *gorm.DB) {
-	customers := []service.Customer{
-		{Name: "Tony Stark", Age: 30},
-		{Name: "Black Widow", Age: 25},
-		{Name: "Scarlet Witch", Age: 35},
-	}
-	for _, customer := range customers {
-		db.Create(&customer)
-	}
 }

@@ -12,7 +12,13 @@ https://golang.org/dl/
 git clone https://github.com/TimeReapz/national-itmx.git
 ```
 
-3. Run `main.go`:
+3. Run script for create database:
+
+```bash
+sh script.sh
+```
+
+4. Run `main.go`:
 
 ```bash
 go run main.go
